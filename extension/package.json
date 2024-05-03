@@ -1,0 +1,83 @@
+{
+  "name": "llm-extension",
+  "displayName": "LLM-extension",
+  "description": "An extension for automatic generation of tests and documentation",
+  "version": "0.0.1",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/GrigoriyPA/LLM-extension"
+  },
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onLanguage:python"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "llm-extension.documentFunction",
+        "title": "Document function"
+      },
+      {
+        "command": "llm-extension.generateTests",
+        "title": "Generate tests"
+      },
+      {
+        "command": "llm-extension.nameSuggestion",
+        "title": "Name suggestion"
+      },
+      {
+        "command": "llm-extension.semanticAnalysisOfSymbol",
+        "title": "Semantic analysis of symbol"
+      }
+    ],
+    "menus": {
+      "editor/context": [
+        {
+          "command": "llm-extension.documentFunction",
+          "when": "editorTextFocus && textInputFocus && editorLangId == python"
+        },
+        {
+          "command": "llm-extension.generateTests",
+          "when": "editorTextFocus && textInputFocus && editorLangId == python"
+        },
+        {
+          "command": "llm-extension.nameSuggestion",
+          "when": "editorTextFocus && textInputFocus && editorLangId == python"
+        },
+        {
+          "command": "llm-extension.semanticAnalysisOfSymbol",
+          "when": "editorTextFocus && textInputFocus && editorLangId == python"
+        }
+      ]
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p .",
+    "watch": "tsc -watch -p .",
+    "lint": "eslint src --ext ts"
+  },
+  "dependencies": {
+    "node-fetch": "^2.7.0",
+    "vscode-languageclient": "^9.0.1"
+  },
+  "devDependencies": {
+    "@types/mocha": "^10.0.6",
+    "@types/node": "18.x",
+    "@types/node-fetch": "^2.6.11",
+    "@types/vscode": "^1.85.0",
+    "@typescript-eslint/eslint-plugin": "^6.15.0",
+    "@typescript-eslint/parser": "^6.15.0",
+    "@vscode/test-cli": "^0.0.4",
+    "@vscode/test-electron": "^2.3.8",
+    "eslint": "^8.56.0",
+    "prettier": "3.2.5",
+    "typescript": "^5.3.3"
+  }
+}
